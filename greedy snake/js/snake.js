@@ -45,7 +45,7 @@
 
     };
 
-    Snake.prototype.move = function(){
+    Snake.prototype.move = function(food, map){
         // body of snake(not head) move:
         for (var i = this.body.length - 1; i > 0; i--){
             this.body[i].x = this.body[i - 1].x;
@@ -68,6 +68,27 @@
                 head.y += 1;
                 break;
         }
+
+        // snake eats food
+        var headX = head.x * 20;
+        var headY = head.y * 20;
+        if (headX === food.x && headY === food.y) {
+            // snake get longer
+            // obtain the last element of this.body, and push a new element to it
+            var last = this.body[this.body.length - 1];
+            this.body.push(
+                {
+                    x: last.x,
+                    y: last.y,
+                    color: last.color
+                }
+            );
+
+            // food generated randomly
+            food.renderFood(map);
+        }
+
+
     };
 
     // expose Snake to other modules

@@ -34,13 +34,6 @@
         
     };
     
-    // test
-    // var map = document.getElementById('map');
-    // var food = new Food();
-    // food.renderFood(map);
-
-
-    // expose Food to other modules
     window.Food = Food;
 
 })(window, undefined);
