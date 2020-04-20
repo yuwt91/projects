@@ -30,8 +30,7 @@
 
         div.style.left = this.x + 'px';
         div.style.top = this.y + 'px';
-        
-        
+    
     };
     
     window.Food = Food;
