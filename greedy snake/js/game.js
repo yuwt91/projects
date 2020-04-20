@@ -1,4 +1,4 @@
-(function(){
+(function(window, undefined){
 
     var that; // record game object
     
@@ -19,9 +19,6 @@
         // key control
         bindKey();
 
-       // eat food and get longer
-
-
     }
 
     function bindKey(){
@@ -29,31 +26,31 @@
             // 37-left 38-top 39-right 40-down
             switch(e.keyCode) {
                 case 37:
-                    that.snake.direction = 'left';
+                    this.snake.direction = 'left';
                     break;
                 case 38:
-                    that.snake.direction = 'top';
+                    this.snake.direction = 'top';
                     break;
                 case 39:
-                    that.snake.direction = 'right';
+                    this.snake.direction = 'right';
                     break;
                 case 40:
-                    that.snake.direction = 'bottom';
+                    this.snake.direction = 'bottom';
                     break;
             }
 
-        }, false)
+        }.bind(that), false)
     }
 
     function runSnake(){
         var timeId = setInterval(function(){
-            that.snake.move(that.food, that.map);
-            that.snake.renderSnake(that.map);
+            this.snake.move(this.food, this.map);
+            this.snake.renderSnake(this.map);
 
-            var maxX = that.map.offsetWidth / 20;
-            var maxY = that.map.offsetHeight / 20;
-            var headX = that.snake.body[0].x;
-            var headY = that.snake.body[0].y;
+            var maxX = this.map.offsetWidth / 20;
+            var maxY = this.map.offsetHeight / 20;
+            var headX = this.snake.body[0].x;
+            var headY = this.snake.body[0].y;
 
             if(headX <= 0 || headX >=  maxX) {
                 alert('Game Over!');
@@ -65,12 +62,9 @@
                 clearInterval(timeId);
             }
 
-        }, 150)
+        }.bind(that), 150)
     }
 
     window.Game = Game;
-})();
+})(window, undefined);
 
-var map = document.getElementById('map');
-var game = new Game(map);
-game.start(map);

@@ -5,9 +5,9 @@
     function Snake(){
         this.direction = 'right';
         this.body =[
-            {x: 5, y: 3, color: 'red'},
-            {x: 4, y: 3, color: 'blue'},
-            {x: 3, y: 3, color: 'blue'}
+            {x: 5, y: 3, background: 'url("images/head.png")'},
+            {x: 4, y: 3, background: 'url("images/body.png")'},
+            {x: 3, y: 3, background: 'url("images/body.png")'}
         ];
 
     }
@@ -30,6 +30,9 @@
         for(var i = 0; i < this.body.length; i++) {
             var objSnake = this.body[i];
 
+            // two representation of snake:
+            // module: data in the array of snake object
+            // viewer: nodes in DOM
             var div = document.createElement('div');
             map.appendChild(div);
             elements.push(div);
@@ -40,7 +43,8 @@
             // set their initial position with their size hard coded
             div.style.left = objSnake.x * 20 + 'px';
             div.style.top = objSnake.y * 20 + 'px';
-            div.style.backgroundColor = objSnake.color;
+            div.style.backgroundImage = objSnake.background;
+            //div.style.backgroundSize = 'cover';
         }
 
     };
@@ -80,7 +84,7 @@
                 {
                     x: last.x,
                     y: last.y,
-                    color: last.color
+                    background: 'url("images/body.png")'
                 }
             );
 
