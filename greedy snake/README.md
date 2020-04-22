@@ -80,6 +80,20 @@ div.style.height = 20px;
 ```
 
 2. 引发了一次浏览器当机
+```javascirpt
+4.22 更新
+已查到错误：
+for (var i = 0, len = arr.length; i < len; i++) {
+	if (**i = 0** /* 是个赋值语句，其值是右边的值 */) { //
+		// dosomething
+	}
+}
+
+为什么执行上述语句，没有任何输出，且跳不出循环？
+1. if(i=0) 的判断是 false， if 判断语句内的操作不执行，浏览器没有反应；
+2. 每次循环的时候把 i 值设为了 0，所以永远满足循环条件，一直循环下去。
+```
+
 ```javascript
 for (var i = 0, len = arr.length; i < len; i++) {
 	if (i = 0) {
@@ -94,7 +108,9 @@ for (var i = 0, len = arr.length; i < len; i++) {
 结果如下图：
 ![几秒后，风扇吹得跟发动机似得](images/rendering_forever.jpg)
 
-浏览器估计一直在遍历的第一次中没出来。
+浏览器估计一直在执行第一次循环。
+
+
 
 3. 相同目录的文件在 CSS 和 JS 文件中引用的路径不同
 
