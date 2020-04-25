@@ -84,7 +84,7 @@ div.style.height = 20px;
 4.22 更新
 已查到错误：
 for (var i = 0, len = arr.length; i < len; i++) {
-	if (**i = 0** /* 是个赋值语句，其值是右边的值 */) { //
+	if (**i = 0** /* 是个赋值语句，其值是右边的值, 改成 i === 0 即正常 */) { //
 		// dosomething
 	}
 }
