@@ -1,18 +1,40 @@
 import React from 'react';
-import { render } from 'react-dom';
-import { AppContainer } from 'react-hot-loader';
-import AppState from './AppState';
-import App from './App';
+import ReactDom from 'react-dom';
 
-const appState = new AppState();
+// 添加子元素,在 React 中叫组件
+class Toggle extends React.Component {
 
-render(
-  <AppContainer>
-    <App appState={appState} />
-  </AppContainer>,
-  document.getElementById('root')
-);
+  state = {
+    flag: true
+  }
 
-if (module.hot) {
-  module.hot.accept('./App', () => { render(App) })
+  handleClick(event) {
+    let x = event.target;
+    alert(`触发元素的 id 是 ${x.id}`);
+    this.setState({flag:!this.state.flag});
+  }
+
+  render(){
+    let text = this.state.flag ? 'true':'false';
+    return (<div id="id1" onClick={this.handleClick.bind(this)}>点击我会触发一个弹窗事件。<br />
+    flag: {text}
+    </div>
+   );
+  }
 }
+
+
+class Root extends React.Component {
+  render() {
+    return (
+    <div>
+      <h2>Hello, world!</h2>
+      <br />
+      <Toggle />
+      </div>);
+    // return React.createElement('div', null, 'Welcome to Magedu.');
+  }
+}
+
+// ReactDom.render(React.createElement(Root), document.getElementById('root'));
+ReactDom.render(<Root />, document.getElementById('root'));
