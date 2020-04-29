@@ -7,6 +7,8 @@ import 'antd/lib/card/style';
 import 'antd/lib/row/style';
 import 'antd/lib/col/style';
 
+const Option = Select.Option; 
+
 // 过滤
 export default props => (
     <Card style={ {width:300} }>

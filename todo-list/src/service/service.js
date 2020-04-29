@@ -1,4 +1,5 @@
 import store from 'store';
+import {observable} from 'mobx';
 
 export default class TodoService {
     constructor(){
@@ -16,7 +17,7 @@ export default class TodoService {
 
     static NAMESPACE = "todo::"; // prefix + str = key 给 key 名称加前缀
     
-    todos = new Map();
+    @observable todos = new Map();
 
     create(title) { // title 是代办内容，由用户创建并提交, 字符串
         
@@ -29,6 +30,10 @@ export default class TodoService {
         this.todos.set(todo.key, todo);
         store.set(todo.key, todo);
 
+        let temp = this.todos;
+        this.todos = {};
+        this.todos = temp;
+
         return todo;
     }
 
@@ -38,6 +43,10 @@ export default class TodoService {
         
         // 同步到LocalStorage
         store.set(key, todo);
+
+        let temp = this.todos;
+        this.todos = {};
+        this.todos = temp;
 
     }
 
