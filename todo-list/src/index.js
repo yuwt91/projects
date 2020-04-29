@@ -1,40 +1,58 @@
 import React from 'react';
 import ReactDom from 'react-dom';
 
-// 添加子元素,在 React 中叫组件
-class Toggle extends React.Component {
+import Create from './component/Create';
+import TodoService from './sevice/service';
+import Todo from'./component/Todo';
+import Filter from'./component/Filter';
 
-  state = {
-    flag: true
+class Root extends React.Component {
+  constructor(props) {
+    super(props);
+    this.service = new TodoService();
+    this.state = {todos:this.service.todos, filter:'uncompleted'}
   }
 
-  handleClick(event) {
-    let x = event.target;
-    alert(`触发元素的 id 是 ${x.id}`);
-    this.setState({flag:!this.state.flag});
+  handleCreate(event) {
+    // console.log('eventtargetvalue=', event.target.value);
+    this.service.create(event.target.value);
+    this.setState({todos: this.service.todos});
+  }
+
+  handleCheckdChange(event,key) {
+    this.service.setTodoState(key, event.target.checked);
+    this.setState({todos: this.service.todos});
+  }
+
+
+  handleCondChange(value){
+    this.setState({filter:value});
   }
 
   render(){
-    let text = this.state.flag ? 'true':'false';
-    return (<div id="id1" onClick={this.handleClick.bind(this)}>点击我会触发一个弹窗事件。<br />
-    flag: {text}
-    </div>
-   );
-  }
-}
-
-
-class Root extends React.Component {
-  render() {
     return (
-    <div>
-      <h2>Hello, world!</h2>
-      <br />
-      <Toggle />
+      <div>
+        <Create onCreate={this.handleCreate.bind(this)} />
+        <Filter onChange={this.handleCondChange.bind(this)}/>
+        <hr />
+        {/*每条todo的显示*/}
+
+        {[...this.service.todos.values()]
+        .filter(item => {
+          let fs = this.state.filter;
+          if (fs === 'all') {
+            return true;
+          } else if (fs === 'completed') {
+            if (item.completed === true) return true;
+            else return false;
+          } else if (fs === 'uncompleted') {
+            if (item.completed === false) return true;
+            else return false;
+          }   
+        })
+        .map(item => <Todo onChange={this.handleCheckdChange.bind(this)} key={item.key} todo={item} />)}
       </div>);
-    // return React.createElement('div', null, 'Welcome to Magedu.');
   }
 }
 
-// ReactDom.render(React.createElement(Root), document.getElementById('root'));
 ReactDom.render(<Root />, document.getElementById('root'));
