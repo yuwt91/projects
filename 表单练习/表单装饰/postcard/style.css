@@ -1,0 +1,113 @@
+/* 使用自定义字体 */
+@font-face {
+    font-family: 'handwriting';
+    src: url('fonts/journal-webfont.woff2') format('woff2'),
+         url('fonts/journal-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'typewriter';
+    src: url('fonts/veteran_typewriter-webfont.woff2') format('woff2'),
+         url('fonts/veteran_typewriter-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+/* 总体样式 */
+body{
+    font: 1.3rem sans-serif;
+    padding: 0.5em;
+    margin: 0;
+    background: #222;
+}
+
+form {
+    position: relative;
+    width: 740px;
+    height: 498px;
+    margin: 0 auto;
+    padding: 1em;
+    box-sizing: border-box;
+    background: #fff url(background.jpg);
+
+    /* 用 grid 进行布局 */
+    display: grid;
+    grid-gap: 20px;
+    grid-template-columns : repeat(2, 1fr);
+    grid-template-rows    : 10em 1em 1em 1em;
+}
+
+h1 {
+    font: 1em "typewriter", monospace;
+    align-self: end;
+}
+
+#message {
+    grid-row: 1/5;
+}
+#from, #reply {
+    display: flex;
+}
+
+/* 装饰 label 和 控件 */
+label {
+    font: .8em "typewriter", sans-serif;
+}
+
+/* 重新设定文本输入框的边框等样式 */
+input, textarea {
+    -webkit-appearance: none;
+    appearance: none;
+    border:none;
+    font: 1.4em/1.5em "handwriting", cursive, sans-serif; 
+    padding: 0 10px;
+    margin: 0;
+    width: 80%;
+    background: none; 
+}
+
+/* 文本输入框获得焦点时样式 */
+input:focus, textarea:focus{
+    background: rgba(0,0,0,.1);
+    border-radius: 5px;
+}
+
+/* 定制多行文本输入框 textarea */
+textarea {
+    resize: none;
+    display: block;
+
+    padding: 10px;
+    margin: 10px 0 0 -10px;
+    width: 95%;
+    height: 90%;
+
+    border: 1px dashed rgba(0,0,0,.1);
+
+    overflow: auto;
+}
+
+/* 定制 提交按钮 */
+button {
+    padding: 5px;
+    font: bold .6em sans-serif;
+    border: 2px solid #333;
+    border-radius: 5px;
+    background: none;
+    cursor: pointer;
+    transform: rotate(-1.5deg);
+    margin-top: 15px;
+}
+
+button:after {
+    content      : " >>>";
+}
+
+button:hover,
+button:focus {
+  outline     : none;
+  background  : #000;
+  color       : #FFF;
+}
