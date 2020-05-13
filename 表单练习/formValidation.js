@@ -19,4 +19,19 @@ const pswReg = /^(?=.*?[a-z])(?=.*?[0-9]).{8,}$/;
 const mailReg = /^[A-Za-z0-9]+([_\.][A-Za-z0-9]+)*@([A-Za-z0-9\-]+\.)+[A-Za-z]{2,6}$/;
 
 
+tel.blur(function(){
+    if (telReg.test(this.value)) {
+        $('#tel + span').empty().html('✅');
+    } else {
+        $('#tel + span').empty().html('请输入正确的手机号').css('color','red');
+    }
+});
+
+psw.blur(function(){
+
+});
+
+mail.blur(function(){
+
+});
 

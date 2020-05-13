@@ -16,15 +16,17 @@
             overflow: hidden;
         }
         label {
-            display: block;
+            display: inline-block;
         }
         .form_item {
             margin: 10px 0 0 0;
-            
         }
-        #mail {
-            
+        input {
+            width: 150px;
         }
+        /* input + span{
+            visibility: hidden;
+        } */
         button {
             margin-top: 10px;
         }
@@ -34,16 +36,19 @@
     <form>
         <span>请输入信息，带 * 是必填项</span>
         <div class="form_item">
-            <label for="tel">手机*：</label>
-            <input type="tel" id="tel" name="tel" required/>
+            <label for="tel">手机*：</label><br>
+            <input type="tel" id="tel" name="tel" value="18999999999" required/>
+            <span></span>
         </div>
         <div class="form_item">
-            <label for="psw">密码*：</label>
+            <label for="psw">密码*：</label><br>
             <input type="password" id="psw" name="psw" required/>
+            <span></span>
         </div>
         <div class="form_item">
-            <label for="mail">邮箱：</label>
+            <label for="mail">邮箱：</label><br>
             <input type="mail" id="mail" name="mail"/>
+            <span></span>
         </div>
         <button type="submit">提交</button>
     </form>
