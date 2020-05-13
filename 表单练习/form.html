@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS 验证表单数据</title>
+    <style>
+        body{
+            box-sizing: border-box;
+            width: 500px;
+            margin: auto;
+        }
+        form {
+            width: auto;
+            margin: 50px;
+            overflow: hidden;
+        }
+        label {
+            display: block;
+        }
+        .form_item {
+            margin: 10px 0 0 0;
+            
+        }
+        #mail {
+            
+        }
+        button {
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <form>
+        <span>请输入信息，带 * 是必填项</span>
+        <div class="form_item">
+            <label for="tel">手机*：</label>
+            <input type="tel" id="tel" name="tel" required/>
+        </div>
+        <div class="form_item">
+            <label for="psw">密码*：</label>
+            <input type="password" id="psw" name="psw" required/>
+        </div>
+        <div class="form_item">
+            <label for="mail">邮箱：</label>
+            <input type="mail" id="mail" name="mail"/>
+        </div>
+        <button type="submit">提交</button>
+    </form>
+    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="formValidation.js"></script>
+</body>
+</html>
