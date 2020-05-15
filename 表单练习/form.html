@@ -24,9 +24,10 @@
         input {
             width: 150px;
         }
-        /* input + span{
-            visibility: hidden;
-        } */
+        span.tishi{
+            color: red;
+            font-size: 14px;
+        }
         button {
             margin-top: 10px;
         }
@@ -38,21 +39,22 @@
         <div class="form_item">
             <label for="tel">手机*：</label><br>
             <input type="tel" id="tel" name="tel" value="18999999999" required/>
-            <span></span>
+            <span class="tishi"></span>
         </div>
         <div class="form_item">
             <label for="psw">密码*：</label><br>
-            <input type="password" id="psw" name="psw" required/>
-            <span></span>
+            <input type="password" id="psw" name="psw" value="naohcuso4" required/>
+            <span class="tishi"></span>
         </div>
         <div class="form_item">
             <label for="mail">邮箱：</label><br>
-            <input type="mail" id="mail" name="mail"/>
-            <span></span>
+            <input type="mail" id="mail" value="334@146.com" name="mail"/>
+            <span class="tishi"></span>
         </div>
         <button type="submit">提交</button>
+        <span class="tishi"></span>
     </form>
     <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="formValidation.js"></script>
+    <script src="form.js"></script>
 </body>
 </html>

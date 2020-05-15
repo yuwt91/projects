@@ -56,4 +56,3 @@ addEvent(form, "submit", function () {
     }
 });
 
-// 手机号验证，失去焦点事件
