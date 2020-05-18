@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Todo frameworkless</title>
+</head>
+<body>
+    <section class="todoapp">
+        <header class="header">
+            <h1>todos</h1>
+            <input 
+                class="new-todo"
+                placeholder="输入代办事项"
+                autofocus="" />
+        </header>
+        <section class="main">
+            <input 
+                id="toggle-all"
+                class="toggle-all"
+                type="checkbox"/>
+            <label for="toggle-all">全部标记为完成</label>
+            <ul class="todo-list"></ul>
+        </section>
+        <footer class="footer">
+            <span class="todo-count"></span>
+            <ul class="filters">
+                <li>
+                    <a href="#/">全部</a>
+                </li>
+                <li>
+                    <a href="#/active">进行中</a>
+                </li>
+                <li>
+                    <a href="#/completed">已完成</a>
+                </li>
+            </ul>
+            <button class="clear-completed">清除已完成</button>
+        </footer>
+    </section>
+    <footer class="info">
+        <p>双击编辑一条 todo</p>
+    </footer>
+</body>
+</html>
